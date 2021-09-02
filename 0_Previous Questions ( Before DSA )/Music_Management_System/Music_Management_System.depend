@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1617120912 source:c:\users\sumit\desktop\hash code\music_management_system\main.cpp
+	<bits/stdc++.h>
+	<Windows.h>
+	<iostream>
+	<string>
+	<fstream>
+	<cstdlib>
+	<conio.h>
+
