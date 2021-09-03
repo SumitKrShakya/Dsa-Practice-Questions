@@ -1,19 +1,44 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-int alpha = 0;
-int lastoccor(int num, int n, int *arr, int i)
+
+// online method
+int lastoccor(int *arr, int n, int key)
 {
-    if (i < 0)
+    if (n == 0)
     {
         return -1;
     }
-    if (arr[i] == num)
+    int i = lastoccor(arr + 1, n - 1, key);
+
+    if (i == -1)
     {
-        return i;
+        if (arr[0] == key)
+        {
+            return 0;
+        }
+        else
+        {
+            return -1;
+        }
     }
-    return lastoccor(num, n, arr, i - 1);
+
+    return i + 1;
 }
+
+// int alpha = 0;
+// int lastoccor(int num, int n, int *arr, int i)
+// {
+//     if (i < 0)
+//     {
+//         return -1;
+//     }
+//     if (arr[i] == num)
+//     {
+//         return i;
+//     }
+//     return lastoccor(num, n, arr, i - 1);
+// }
 
 int main()
 {
@@ -24,5 +49,5 @@ int main()
     {
         cin >> arr[i];
     }
-    cout << lastoccor(num, n, arr, n - 1);
+    cout << lastoccor(arr, n, num);
 }

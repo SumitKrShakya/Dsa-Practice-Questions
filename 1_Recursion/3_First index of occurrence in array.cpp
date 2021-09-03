@@ -2,14 +2,34 @@
 
 using namespace std;
 
-int reversearr(int num, int n, int *arr, int i)
+// online method
+int reversearr(int *arr, int n, int key)
 {
-    if (arr[i] == num)
+    if (n == 0)
     {
-        return i;
+        return -1;
     }
-    return reversearr(num, n, arr, i + 1);
+    if (arr[0] == key)
+    {
+        return 0;
+    }
+    int i = reversearr(arr + 1, n - 1, key);
+    if (i == -1)
+    {
+        return -1;
+    }
+    return i + 1;
 }
+
+// My Method
+// int reversearr(int num, int n, int *arr, int i)
+// {
+//     if (arr[i] == num)
+//     {
+//         return i;
+//     }
+//     return reversearr(num, n, arr, i + 1);
+// }
 
 int main()
 {
@@ -20,5 +40,5 @@ int main()
     {
         cin >> arr[i];
     }
-    cout << reversearr(num, n, arr, 0);
+    cout << reversearr(arr, n, num);
 }
