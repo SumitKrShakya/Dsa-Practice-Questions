@@ -17,8 +17,7 @@ void arr_generator() {
     }
 }
 
-void testcase_generator()
-{
+void testcase_generator() {
     int p = 10000;
     a = random_numbers(1, p);
     b = random_numbers(1, p);
@@ -33,8 +32,7 @@ void testcase_generator()
     //Code
 }
 
-int brute_code(int a, int b, int c, int d)
-{
+int brute_code(int a, int b, int c, int d) {
     int ans;
     // Paste brute_code here.
     // Change input of this function according to input of your programme.
@@ -56,22 +54,18 @@ int optimised_code(int a, int b, int c, int d)
     return ans;
 }
 
-void solve()
-{
-    while (true)
-    {
+void solve() {
+    while (true) {
         testcase_generator();
         int ans_brute = brute_code(a, b, c, d);
         int ans_optimised = optimised_code(a, b, c, d);
-        if (ans_brute != ans_optimised)
-        {
+        if (ans_brute != ans_optimised) {
             cout << "Brute Answer = " << ans_brute << "     Optimised Answer = " << ans_optimised << endl;
         }
     }
 }
 
-int32_t main()
-{
+int32_t main() {
     srand(time(0));
     solve();
 
