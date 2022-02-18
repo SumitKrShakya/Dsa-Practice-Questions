@@ -1,0 +1,1 @@
+{"name":"Local: bfsAdjecency List","url":"e:\\Study\\DSA\\Graph\\bfsAdjecency List.cpp","tests":[{"id":1645030751842,"input":"8\n0\n2 8 3\n2 8 3\n3 1 2 4\n1 3\n1 6\n1 5\n1 8\n3 1 2 7","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Study\\DSA\\Graph\\bfsAdjecency List.cpp","group":"local","local":true}
