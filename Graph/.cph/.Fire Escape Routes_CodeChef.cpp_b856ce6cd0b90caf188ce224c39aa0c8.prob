@@ -1,0 +1,1 @@
+{"name":"Local: Fire Escape Routes_CodeChef","url":"e:\\Study\\DSA\\Graph\\Fire Escape Routes_CodeChef.cpp","tests":[{"id":1646040308314,"input":"3\n4 2\n1 2\n2 3\n5 3\n1 2\n2 3\n1 3\n6 3\n1 2\n3 4\n5 6","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\Study\\DSA\\Graph\\Fire Escape Routes_CodeChef.cpp","group":"local","local":true}

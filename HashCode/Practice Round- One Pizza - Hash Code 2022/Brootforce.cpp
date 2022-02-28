@@ -44,6 +44,7 @@ bool dislikesFunc(customer* cust, vector<string> vec){
     }
     return true;
 }
+
 int tempalpha=0;
 void printArray(vector<string> vec)
 {
@@ -63,6 +64,7 @@ void printArray(vector<string> vec)
         cout<<"temp "<<tempalpha<<endl;
     }
 }
+
 int tempabcd=0;
 void printSubsequences(vector<string> arr, int index, vector<string> subarr) {
     if (index == arr.size()) {
@@ -110,7 +112,7 @@ int main(){
     // globalIntForVec++;
     // todo: start
     ifstream inFile;
-    inFile.open("input\\d_difficult.in.txt");
+    inFile.open("input\\c_coarse.in.txt");
     if (!inFile.is_open()) {
         cout << "Unable to open file";
     }
@@ -174,7 +176,7 @@ int main(){
     vector<string> b;
     printSubsequences(vec_diff_ingd, 0,b);
 
-    // cout<<"\nFinal answer ------- \nTotal "<<max_customer_pizza<<" customer stisfied\nby flllowing ingridient\n"<<endl;
+    cout<<"\nFinal answer ------- \nTotal "<<max_customer_pizza<<" customer stisfied\nby flllowing ingridient\n"<<endl;
     cout<<max_customer_pizza_vec.size()<<" ";
     for(int i=0;i<max_customer_pizza_vec.size();i++){
         cout<<max_customer_pizza_vec[i]<<" ";
