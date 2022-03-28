@@ -3,7 +3,7 @@
 #define mod 1000000007
 using namespace std;
 
-void dfs(vector<vector<int>> adj, vector<bool> &vis, int root, int &c){
+void dfs(vector<vector<long long int>> &adj, vector<bool> &vis, long long int root, long long int &c){
     vis[root]=true;
     c++;
 
@@ -15,21 +15,21 @@ void dfs(vector<vector<int>> adj, vector<bool> &vis, int root, int &c){
 }
 
 int main(){
-    int t;
+    long long int t;
     cin>>t;
     while(t--){
-        int n,m,u,v;
+        long long int n,m,u,v;
         cin>>n>>m;
-        vector<vector<int>>adj(n+1);
-        for(int i=0;i<m;i++){
+        vector<vector<long long int>>adj(n+1);
+        for(long long int i=0;i<m;i++){
             cin>>u>>v;
             adj[u].push_back(v);
             adj[v].push_back(u);
         }
-        int cc_componenet=0,ans1=1;
+        long long int cc_componenet=0,ans1=1;
         vector<bool>vis(n+1,false);
-        for(int i=1;i<=n;i++){
-            int component=0;
+        for(long long int i=1;i<=n;i++){
+            long long int component=0;
             if(!vis[i]){
                 dfs(adj, vis, i, component);
                 cc_componenet++;
