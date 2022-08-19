@@ -66,6 +66,7 @@ void solve(){
         cout<<1<<endl;
         return;
     }
+     
     cout<<2<<endl;
     
     
