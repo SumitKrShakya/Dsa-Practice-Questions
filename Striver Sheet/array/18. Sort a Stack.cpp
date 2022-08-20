@@ -1,30 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-public Stack<Integer> sort(Stack<Integer> s)
-{
- //add code here.
- if(s.size()==1)
- {
-     return s;
- }
- int temp=s.peek();
- s.pop();
- s=sort(s);
- insert(s,temp);
- return s;
-}
-public static void insert(Stack<Integer> s,int temp)
-{
-    if(s.size()==0 || s.peek()<=temp)
+class GfG{
+    public: stack<int> sort(stack<int> s)
     {
-        s.push(temp);
+     //add code here.
+     if(s.size()==1){
+        return s;
+     }
+     int temp=s.top();
+     s.pop();
+     s=sort(s);
+     insert(s,temp);
+     return s;
+    }
+    public:void insert(stack<int> s,int temp)
+    {
+        if(s.size()==0 || s.top()<=temp)
+        {
+            s.push(temp);
+            return;
+        }
+        int val=s.top();
+        s.pop();
+        insert(s,temp);
+        s.push(val);
         return;
     }
-    int val=s.peek();
-    s.pop();
-    insert(s,temp);
-    s.push(val);
-    return;
-}
-}
+};
