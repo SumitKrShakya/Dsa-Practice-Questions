@@ -4,15 +4,15 @@ using namespace std;
 class GfG{
     public: stack<int> sort(stack<int> s)
     {
-     //add code here.
-     if(s.size()==1){
+        //add code here.
+        if(s.size()==1){
+           return s;
+        }
+        int temp=s.top();
+        s.pop();
+        s=sort(s);
+        insert(s,temp);
         return s;
-     }
-     int temp=s.top();
-     s.pop();
-     s=sort(s);
-     insert(s,temp);
-     return s;
     }
     public:void insert(stack<int> s,int temp)
     {
