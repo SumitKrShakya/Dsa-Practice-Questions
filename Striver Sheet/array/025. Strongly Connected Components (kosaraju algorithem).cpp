@@ -2,21 +2,21 @@
 using namespace std;
 
 
-void transDfs(vector<vector<int>> &transAdj, vector<int>&transVis, vector<int> &SSC, int transNode){
+void Kosaraju_TransDfs(vector<vector<int>> &transAdj, vector<int>&transVis, vector<int> &SSC, int transNode){
     transVis[transNode]=1;
     for(auto transChild : transAdj[transNode]){
         if(!transVis[transChild]){
-            transDfs(transAdj, transVis, SSC, transChild);
+            Kosaraju_TransDfs(transAdj, transVis, SSC, transChild);
         }
     }
     SSC.push_back(transNode);
 }
 
-void dfsOrder(vector<vector<int>>&adj, vector<int>&vis, vector<int>&order, int node){
+void Kosaraju_DfsOrder(vector<vector<int>>&adj, vector<int>&vis, vector<int>&order, int node){
     vis[node]=1;
     for(auto child:adj[node]){
         if(!vis[child]){
-            dfsOrder(adj, vis, order, child);
+            Kosaraju_DfsOrder(adj, vis, order, child);
         }
     }
     order.push_back(node);
@@ -37,7 +37,7 @@ vector<vector<int>> stronglyConnectedComponents(int n, vector<vector<int>> &edge
     }
     for(int i=0;i<n;i++){
         if(!vis[i]){
-            dfsOrder(adj, vis, order, i);
+            Kosaraju_DfsOrder(adj, vis, order, i);
         }
     }
     
@@ -47,7 +47,7 @@ vector<vector<int>> stronglyConnectedComponents(int n, vector<vector<int>> &edge
         int x = order[i];
         if(!transVis[x]){
             vector<int>SSC;
-            transDfs(transAdj, transVis, SSC, x);
+            Kosaraju_TransDfs(transAdj, transVis, SSC, x);
             ans.push_back(SSC);
         }
     }
