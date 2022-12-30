@@ -275,70 +275,113 @@ const int dx[4]{1,0,-1,0},  dy[4]{0,1,0,-1}; // for every grid problem!!
 
 
 // <----------------------- SOLUTION ------------------------------------>
-void solve(){
-    
+
+int f(int x) {
+    return std::to_string(x).length();
+}
+ 
+void solve() {
     int n;
-    cin>>n;
-    vector<long long>v1(n);
-    vector<long long>v2(n);
-    inpt(v1);
-    inpt(v2);
-    map<int,int>mp1;
-    map<int,int>mp2;
+    std::cin >> n;
+    
+    std::priority_queue<int> a, b;
+    for (int i = 0; i < n; i++) {
+        int x;
+        std::cin >> x;
+        a.push(x);
+    }
+    for (int i = 0; i < n; i++) {
+        int x;
+        std::cin >> x;
+        b.push(x);
+    }
+    
     int ans = 0;
-    for(auto x:v1) mp1[x]++;
+    
+    while (!a.empty()) {
+        int x = a.top();
+        int y = b.top();
+        
+        if (x > y) {
+            a.pop();
+            a.push(f(x));
+            ans++;
+        } else if (x < y) {
+            b.pop();
+            b.push(f(y));
+            ans++;
+        } else {
+            a.pop();
+            b.pop();
+        }
+    }
+    
+    std::cout << ans << "\n";
+}
+// void solve(){
+    
+    // int n;
+    // cin>>n;
+    // vector<long long>v1(n);
+    // vector<long long>v2(n);
+    // inpt(v1);
+    // inpt(v2);
+    // map<int,int>mp1;
+    // map<int,int>mp2;
+    // int ans = 0;
+    // for(auto x:v1) mp1[x]++;
 
-    for(auto x:v2){
-        if(mp1.count(x)){
-            mp1[x]--;
-            if(mp1[x]==0)
-                mp1.erase(x);
-        }else{
-            mp2[x]++;
-        }
-    }
-    // cout<<ans<<endl;
-    for(auto x:mp1){
-        int key = x.first;
-        int val = x.second;
-        if(key >= 10){
-            int temp = to_string(key).size();
-            mp1[temp] += mp1[key];
+    // for(auto x:v2){
+    //     if(mp1.count(x)){
+    //         mp1[x]--;
+    //         if(mp1[x]==0)
+    //             mp1.erase(x);
+    //     }else{
+    //         mp2[x]++;
+    //     }
+    // }
+    // // cout<<ans<<endl;
+    // for(auto x:mp1){
+    //     int key = x.first;
+    //     int val = x.second;
+    //     if(key >= 10){
+    //         int temp = to_string(key).size();
+    //         mp1[temp] += mp1[key];
             
-            ans+=mp1[key];
-            mp1.erase(key);
-        }
-    }
-    // cout<<ans<<endl;
-    for(auto x:mp2){
-        int key = x.first;
-        int val = x.second;
-        if(key >= 10){
-            int temp = to_string(key).size();
-            mp2[temp] += mp2[key];
+    //         ans+=mp1[key];
+    //         mp1.erase(key);
+    //     }
+    // }
+    // // cout<<ans<<endl;
+    // for(auto x:mp2){
+    //     int key = x.first;
+    //     int val = x.second;
+    //     if(key >= 10){
+    //         int temp = to_string(key).size();
+    //         mp2[temp] += mp2[key];
             
-            ans+=mp2[key];
-            mp2.erase(key);
-        }
-    }
-    // cout<<ans<<endl;
-    // cout<<"mp1"<<endl;
-    // prnt(mp1);
-    // cout<<"mp2"<<endl;
-    // prnt(mp2);
-    vi v3(10),v4(10);
-    for(auto x:mp1){
-        v3[x.first] = x.second;
-    }
-    for(auto x:mp2){
-        v4[x.first] = x.second;
-    }
-    for(int i=2;i<=9;i++){
-        ans+= abs(v3[i]-v4[i]);
-    }
-    // prnt(v3);    prnt(v4);
+    //         ans+=mp2[key];
+    //         mp2.erase(key);
+    //     }
+    // }
+    // // cout<<ans<<endl;
+    // // cout<<"mp1"<<endl;
+    // // prnt(mp1);
+    // // cout<<"mp2"<<endl;
+    // // prnt(mp2);
+    // vi v3(10),v4(10);
+    // for(auto x:mp1){
+    //     v3[x.first] = x.second;
+    // }
+    // for(auto x:mp2){
+    //     v4[x.first] = x.second;
+    // }
+    // for(int i=2;i<=9;i++){
+    //     ans+= abs(v3[i]-v4[i]);
+    // }
+    // // prnt(v3);    prnt(v4);
 
-    cout<<ans<<endl;
+    // cout<<ans<<endl;
     
 
     // for(auto x:mp1){
@@ -431,7 +474,7 @@ void solve(){
     
     
     
-}
+// }
 
 
 int main()
