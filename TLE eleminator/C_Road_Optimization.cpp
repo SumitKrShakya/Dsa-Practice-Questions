@@ -50,7 +50,37 @@ const int dx[4]{1,0,-1,0},  dy[4]{0,1,0,-1}; // for every grid problem!!
 
 // <----------------------- SOLUTION ------------------------------------>
 void solve(){
+    ll n,l,k;
+    cin>>n>>l>>k;
+    vll dist(n),speed(n);
+    inpt(dist);
+    inpt(speed);
+    dist.push_back(l);
+
+    vvll dp(n+1, vll(k+1, INT_MAX));
+    // dp[i][j] = flag i tak pahuchne ke liye minimum time kitna lagega if we remove j flag
+    //  in between and we are are pushing the answer of possible next postion of the flag
+    // if we already placed ith flag (means ith place is confermed and checking for next flag to place)
+
+    dp[0][0] = 0;
     
+    // dp[i][0] means no flag is removed.
+    for(ll i=1;i<n;i++){
+        dp[i][0] = ((dist[i]-dist[i-1]) * speed[i]) + (i != 0 ? dp[i-1][0] : 0);
+    }
+
+    for(ll i=1;i<n;i++){
+        for(ll j=1;j<=k;j++){
+            for(ll pos = i+1; j+pos-(i+1) <= k;pos++){
+                dp[pos][j+pos-(i+1)]=min(dp[pos][j+pos-(i+1)], dp[i][j] + speed[i]*(dist[pos]-dist[i]));
+            }
+        }
+    }
+
+    // prnt(dp);
+
+    cout<<dp[n-1][k]<<endl;
+
     
     
     
@@ -79,12 +109,12 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
 
-    int t;
-    cin>>t;
-    for(int tt=1;tt<=t;tt++){
+    // int t;
+    // cin>>t;
+    // for(int tt=1;tt<=t;tt++){
         // cout<< "Case #" << tt << ": ";
         solve();
-    }
+    // }
     
     return 0;
 }
