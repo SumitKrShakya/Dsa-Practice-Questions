@@ -47,64 +47,64 @@ void prnt(set<int> &t)  {for(auto &x:t)  cout<<x<<" _ "; cout<<endl;}
 const int MOD = 1e9+7;
 const int dx[4]{1,0,-1,0},  dy[4]{0,1,0,-1}; // for every grid problem!!
 
-ll totalPlane;
-ll helper(ll power, ll plane){
-    // if(plane>=totalPlane){
-    //     return 0;
-    // }
-    // if(power==1){
-    //     return 1;
-    // }
-    // if(plane==0){
-    //     return 1;
-    // }
-    // if(totalPlane+1 == plane){
-    //     return 1;
-    // }
-    if(plane==0){
-        return 1;
-    }
-    if(power==1){
-        return 1;
-    }
-
-    // cout<<power<<" "<<plane<<" "<<a<<endl;
-    ll a = helper(power-1, totalPlane - plane - 1) + helper(power, plane - 1);
-    // return helper(power-1, plane-1) + helper(power, plane + 1);
-    return a;
-}
-
 
 // <----------------------- SOLUTION ------------------------------------>
 void solve(){
-    
-    
-    // int plane,power;
-    // cin>>plane>>power;
-    // vector<vector<int>>dp(power + 1, vector<int>(plane + 1, 0));
-
-    // for(int i=0;i<=power;i++){
-    //     for(int j=0;j<=plane;j++){
-    //         if(j==0) dp[i][j]=1;
-    //         if(i==0) dp[i][j]=0;
-    //     }
+    ll n,m;
+    cin>>n>>m;
+    // vll a(n);
+    // vll b(m);
+    // inpt(a);
+    // inpt(b);
+    // sort(all(b),greater<ll>());
+    // sort(all(a));
+    // ll mina = a[0];
+    // ll maxb = b[0]; 
+    // // prnt(a);
+    // // prnt(b);
+    // a.erase(a.begin());
+    // b.erase(b.begin());
+    // // prnt(a);
+    // // prnt(b);
+    // for(auto x:b){
+    //     a.push_back(x);
     // }
-
-    // for(int i=1;i<=power;i++){
-    //     for(int j=1;j<=plane;j++){
-    //         dp[i][j]=(dp[i][j-1]+dp[i-1][j-1])%MOD;
-    //     }
+    // ll ans=0;
+    // sort(all(a),greater<ll>());
+    // // prnt(a);
+    // for(ll i=0;i<n-1;i++){
+    //     ans+=a[i];
     // }
-    // prnt(dp);
-    // cout<<dp[power][plane]<<endl;
-    
+    // ans+=maxb;
+    // cout<<ans<<endl;
 
+
+
+
+
+
+    priority_queue<ll,vector<ll>,greater<ll>>pq;
+    for(ll i=0;i<n;i++){
+        ll a;
+        cin>>a;
+        pq.push(a);
+    }
+
+    vll b(m);
+    inpt(b);
+    for(auto x:b){
+        pq.pop();
+        pq.push(x);
+    }
+    ll ans = 0;
+    while(!pq.empty()){
+        ans+=pq.top();
+        pq.pop();
+    }
+    cout<<ans<<endl;
     
-    int plane,power;
-    cin>>plane>>power;
-    totalPlane=plane;
-    // cout<<power<<" "<<plane<<endl;
-    cout<<helper(power, plane);
+    
+    
     
     
     

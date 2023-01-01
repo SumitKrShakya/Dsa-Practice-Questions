@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -47,64 +48,48 @@ void prnt(set<int> &t)  {for(auto &x:t)  cout<<x<<" _ "; cout<<endl;}
 const int MOD = 1e9+7;
 const int dx[4]{1,0,-1,0},  dy[4]{0,1,0,-1}; // for every grid problem!!
 
-ll totalPlane;
-ll helper(ll power, ll plane){
-    // if(plane>=totalPlane){
-    //     return 0;
-    // }
-    // if(power==1){
-    //     return 1;
-    // }
-    // if(plane==0){
-    //     return 1;
-    // }
-    // if(totalPlane+1 == plane){
-    //     return 1;
-    // }
-    if(plane==0){
-        return 1;
-    }
-    if(power==1){
-        return 1;
-    }
-
-    // cout<<power<<" "<<plane<<" "<<a<<endl;
-    ll a = helper(power-1, totalPlane - plane - 1) + helper(power, plane - 1);
-    // return helper(power-1, plane-1) + helper(power, plane + 1);
-    return a;
-}
-
 
 // <----------------------- SOLUTION ------------------------------------>
 void solve(){
     
-    
-    // int plane,power;
-    // cin>>plane>>power;
-    // vector<vector<int>>dp(power + 1, vector<int>(plane + 1, 0));
-
-    // for(int i=0;i<=power;i++){
-    //     for(int j=0;j<=plane;j++){
-    //         if(j==0) dp[i][j]=1;
-    //         if(i==0) dp[i][j]=0;
+    ll n,k;
+    cin>>n>>k;
+    // ll a = k-1;
+    // ll temp=1;
+    // for(ll i=n;i>=temp;i--){
+    //     for(ll j=0;j<a;j++){
+    //         if(i<=0 || !(i>=temp)){
+    //             cout<<endl;
+    //             return;
+    //         }
+    //         cout<<i<<" ";
+    //         i--;
     //     }
+    //     if(!(i>=temp))break;
+    //     i++;
+    //     cout<<temp<<" ";
+    //     temp++;
     // }
-
-    // for(int i=1;i<=power;i++){
-    //     for(int j=1;j<=plane;j++){
-    //         dp[i][j]=(dp[i][j-1]+dp[i-1][j-1])%MOD;
-    //     }
-    // }
-    // prnt(dp);
-    // cout<<dp[power][plane]<<endl;
+    // cout<<endl;
+    ll m = 1;
+    for(ll i=n;i>=m;i--){
+        ll cnt=0;
+        while(i>=m && cnt<k-1){
+            cout<<i<<" ";
+            cnt++;
+            i--;
+        }
+        if(!(i>=m)){
+            cout<<endl;
+            return;
+        }
+        i++;
+        cout<<m<<" ";
+        m++;
+    }
+    cout<<endl;
     
-
     
-    int plane,power;
-    cin>>plane>>power;
-    totalPlane=plane;
-    // cout<<power<<" "<<plane<<endl;
-    cout<<helper(power, plane);
     
     
     
