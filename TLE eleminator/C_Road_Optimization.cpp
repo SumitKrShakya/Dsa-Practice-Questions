@@ -65,21 +65,23 @@ void solve(){
     dp[0][0] = 0;
     
     // dp[i][0] means no flag is removed.
-    for(ll i=1;i<n;i++){
-        dp[i][0] = ((dist[i]-dist[i-1]) * speed[i]) + (i != 0 ? dp[i-1][0] : 0);
+    for(ll i=1;i<=n;i++){
+        dp[i][0] = ((dist[i]-dist[i-1]) * speed[i-1]) + dp[i-1][0];
     }
-
-    for(ll i=1;i<n;i++){
-        for(ll j=1;j<=k;j++){
-            for(ll pos = i+1; j+pos-(i+1) <= k;pos++){
-                dp[pos][j+pos-(i+1)]=min(dp[pos][j+pos-(i+1)], dp[i][j] + speed[i]*(dist[pos]-dist[i]));
+    
+    for(ll i=0;i<=n;i++){
+        for(ll j=0;j<=k;j++){
+            for(ll pos = i+1; j+pos-(i+1) <= k && pos<=n;pos++){                
+                dp[pos][j + pos - (i + 1)] = min(dp[pos][j + pos - (i + 1)], dp[i][j] + speed[i] * (dist[pos] - dist[i]));
             }
         }
     }
-
-    // prnt(dp);
-
-    cout<<dp[n-1][k]<<endl;
+    
+    ll ans = INT_MAX;
+    for (ll i = 0; i <= k; i++) {
+        ans = min(dp[n][i], ans);
+    }
+    cout << ans << endl;
 
     
     
